@@ -1,6 +1,8 @@
 package service;
 
 import com.sun.corba.se.impl.io.IIOPOutputStream;
+import dao.AddRecord;
+import dao.GetRecord;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,10 +10,12 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ChatServer {
     private ArrayList<PrintWriter> clientWriters = new ArrayList<PrintWriter>();
+    private ArrayList<String> userNames = new ArrayList<String>();
 
     public static void main(String[] args){
         new ChatServer().go();
@@ -55,7 +59,7 @@ public class ChatServer {
         public ClientHandler(Socket socket) throws IOException {
             this.socket = socket;
             this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            writer = new PrintWriter(socket.getOutputStream());
+            writer = new PrintWriter(this.socket.getOutputStream());
             clientWriters.add(writer);
 
             System.out.println("new a thread");
@@ -69,6 +73,20 @@ public class ChatServer {
 
             try {   // 第一次发送信息，有用户上线了
                 userName = reader.readLine();
+
+                try {  // 用户上线时， 恢复上次聊天的信息
+                    ArrayList<String> records = GetRecord.getRecord(userName);
+                    for(String record : records){
+                        writer.write(record);
+                        writer.flush();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                userNames.add(userName);
                 tellEveryone("..."+userName+"上线了...", writer, "");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -80,7 +98,7 @@ public class ChatServer {
                     System.out.println("get a message : " + message);
                     tellEveryone(message, writer, userName+"：");
                 } catch (IOException e) {             // 当有客户端关闭时，连接重置，出现异常
-                    deleteClient(writer);             // 此时将线程结束，将移除对应的输出流
+                    deleteClient(writer, userName);             // 此时将线程结束，将移除对应的输出流
                     tellEveryone("..."+userName+"下线了...", writer, "");
                     break;
                 }
@@ -93,6 +111,16 @@ public class ChatServer {
         public void tellEveryone(String message, PrintWriter w, String userName){
             System.out.println("the number of clients : " + clientWriters.size());
             if(clientWriters.size() == 0) return;  // 没有连接
+
+            for(String name : userNames){
+                try {
+                    AddRecord.addRecord(name, message);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
 
             for(PrintWriter writer : clientWriters){
                 if(writer.equals(w)){   // 发给自己的信息
@@ -110,8 +138,9 @@ public class ChatServer {
     /*
      * 将下线客户端对应的输出流移除
      */
-    public void deleteClient(PrintWriter writer){
+    public void deleteClient(PrintWriter writer, String userName){
         clientWriters.remove(writer);
+        userNames.remove(userName);
     }
 
 }
