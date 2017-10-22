@@ -1,6 +1,6 @@
 package view;
 
-import dao.IsExist;
+import dao.IsUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,107 +8,130 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class LoginView extends JFrame{
-    private JTextField userName;
-    private JTextField password;
+public class LoginView {
+    JFrame frame;
+    JButton checkButton;
+    JButton sign;
+    JButton reset;
+    JTextField userName;
+    JPasswordField password;
 
     public static void main(String[] args){
         new LoginView();
     }
 
-
     public LoginView(){
-        init();
-        setSize(500, 400);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
+        frame = new JFrame("登录验证");
+        frame.setSize(500, 400);
 
-    public void init(){
-        Label label1 = new Label("userName：");
-        label1.setSize(1,1);
-        Label label2 = new Label("password：");
-        JTextField userName = new JTextField();
+        JPanel panel = new JPanel();
+
+        JLabel label_name = new JLabel("用户名：");
+        JLabel label_passwd = new JLabel("密码：");
+
+        userName = new JTextField();
         userName.setColumns(20);
-        JPasswordField password = new JPasswordField();
-        password.setColumns(10);
-        JButton button = new JButton("确定");
+        password = new JPasswordField();
+        password.setColumns(20);
 
-        Label label3 = new Label();
-        Label label4 = new Label();
-        Label label5 = new Label();
-        Label label6 = new Label();
-        Label label7 = new Label();
-        Label label8 = new Label();
+        JLabel label_1 = new JLabel("   ");
+        JLabel label_2 = new JLabel("   ");
+        JLabel label_3 = new JLabel("   ");
+        JLabel label_4 = new JLabel("   ");
+        JLabel label_5 = new JLabel("   ");
+        checkButton = new JButton("登录");
+        checkButton.addActionListener(new LoginAction());
+        sign = new JButton("注册");
+        reset = new JButton("重置");
+        reset.addActionListener(new ResetAction());
 
-        GridBagLayout layout = new GridBagLayout();
-        setLayout(layout);
-
-        add(label7);
-        add(label8);
-        add(label3);
-        add(label1);
-        add(userName);
-        add(label4);
-        add(label5);
-        add(label2);
-        add(password);
-        add(label6);
-        add(button);
+        GridBagLayout gbl = new GridBagLayout();
+        panel.setLayout(gbl);
+        panel.add(label_1);
+        panel.add(label_name);
+        panel.add(userName);
+        panel.add(label_2);
+        panel.add(label_passwd);
+        panel.add(password);
+        panel.add(label_3);
+        panel.add(label_4);
+        panel.add(label_5);
+        panel.add(checkButton);
+        panel.add(sign);
+        panel.add(reset);
 
         GridBagConstraints s = new GridBagConstraints();
-        s.fill = GridBagConstraints.BOTH;
+        //s.fill = GridBagConstraints.BOTH;
 
-        s.gridwidth = 10;
-        layout.setConstraints(label7, s);
-
-        s.gridwidth = 0;
-        layout.setConstraints(label8, s);
-
-        s.gridwidth = 3;
-        layout.setConstraints(label3, s);
-
+        s.gridwidth = 6;
+        gbl.setConstraints(label_1, s);
         s.gridwidth = 1;
-        layout.setConstraints(label1, s);
-
-        s.gridwidth = 20;
-        s.weightx = 1;
-        layout.setConstraints(userName, s);
-
+        gbl.setConstraints(label_name, s);
         s.gridwidth = 0;
-        layout.setConstraints(label4, s);
-
-        s.gridwidth = 3;
-        layout.setConstraints(label5, s);
-
+        s.weightx = 1;
+        gbl.setConstraints(userName, s);
+        s.gridwidth = 6;
+        gbl.setConstraints(label_2, s);
         s.gridwidth = 1;
-        layout.setConstraints(label2, s);
-
-        s.gridwidth = 5;
-        s.weightx = 1;
-        layout.setConstraints(password, s);
-
+        gbl.setConstraints(label_passwd, s);
         s.gridwidth = 0;
-        layout.setConstraints(label6, s);
+        s.weightx = 1;
+        gbl.setConstraints(password, s);
+        s.gridwidth = 0;
+        gbl.setConstraints(label_3, s);
+        s.gridwidth = 0;
+        gbl.setConstraints(label_4, s);
+        s.gridwidth = 4;
+        gbl.setConstraints(label_5, s);
+        s.gridwidth = 3;
+        gbl.setConstraints(checkButton, s);
+        s.gridwidth = 4;
+        gbl.setConstraints(sign, s);
+        s.gridwidth = 0;
+        gbl.setConstraints(reset, s);
+        frame.add(panel, BorderLayout.CENTER);
 
-        s.gridwidth = 2;
-        layout.setConstraints(button, s);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setVisible(true);
     }
 
-    public class CheckAction implements ActionListener{
+    public class LoginAction implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            String name = userName.getText();
+            String passwd = password.getText();
+
+            if(name.equals("")){
+                JOptionPane.showMessageDialog(null, "用户名不能为空");
+                return;
+            }
+            else if(passwd.equals("")){
+                JOptionPane.showMessageDialog(null, "密码不能为空");
+                return;
+            }
+
+            boolean ok = false;
             try {
-                boolean is;
-                is = IsExist.isExist(userName.getText(), password.getText());
-                if(is == true) System.out.println(true);
-                else System.out.println(false);
+                ok = IsUser.isUser(name, passwd);
+                if(!ok) {
+                    JOptionPane.showMessageDialog(null, "用户名或密码错误！");
+                    return;
+                }
+                // SignUp
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
+        }
+    }
+
+    public class ResetAction implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            userName.setText("");
+            password.setText("");
         }
     }
 }
