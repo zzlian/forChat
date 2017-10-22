@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AddRecord {
+public class AddUser {
     /*
-     * 添加聊天记录信息
+     * 添加用户信息
      */
-    public static void addRecord(String message, String userName) throws SQLException, ClassNotFoundException {
+    public static void addUser(String userName, String password) throws SQLException, ClassNotFoundException {
         Connection con = GetConnection.getConnection(); // 获取数据库连接
 
-        String sql = "insert into messages (username,messag) value(?,?)";  // 插入语句
+        String sql = "insert into users (username,password) value(?,?)";  // 插入语句
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, userName);
-        ps.setString(2, message);
+        ps.setString(2, password);
         ps.executeUpdate();     // 执行更新
     }
 }

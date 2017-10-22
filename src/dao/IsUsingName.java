@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class IsUsingName {
+    /*
+     * 查询用户名是否已经被用
+     */
     public static boolean isUsingName(String name) throws SQLException, ClassNotFoundException {
         Connection con = GetConnection.getConnection(); // 获取连接
 

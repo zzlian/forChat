@@ -77,7 +77,7 @@ public class ChatServer {
                 try {  // 用户上线时， 恢复上次聊天的信息
                     ArrayList<String> records = GetRecord.getRecord(userName);
                     for(String record : records){
-                        writer.write(record);
+                        writer.write(record+"\n");
                         writer.flush();
                     }
                 } catch (SQLException e) {
@@ -87,7 +87,7 @@ public class ChatServer {
                 }
 
                 userNames.add(userName);
-                tellEveryone("..."+userName+"上线了...", writer, "");
+                tellEveryone("..."+userName+"上线了...", writer, "", 0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,10 +96,10 @@ public class ChatServer {
                 try {           // 有客户端发送信息时，告诉其他用户
                     message = reader.readLine();
                     System.out.println("get a message : " + message);
-                    tellEveryone(message, writer, userName+"：");
+                    tellEveryone(message, writer, userName+"：", 1);
                 } catch (IOException e) {             // 当有客户端关闭时，连接重置，出现异常
                     deleteClient(writer, userName);             // 此时将线程结束，将移除对应的输出流
-                    tellEveryone("..."+userName+"下线了...", writer, "");
+                    tellEveryone("..."+userName+"下线了...", writer, "", 1);
                     break;
                 }
             }
@@ -108,13 +108,19 @@ public class ChatServer {
         /*
          * 将客户端发送的信息转发给每一个客户端
          */
-        public void tellEveryone(String message, PrintWriter w, String userName){
+        public void tellEveryone(String message, PrintWriter w, String userName, int flag){
             System.out.println("the number of clients : " + clientWriters.size());
             if(clientWriters.size() == 0) return;  // 没有连接
 
             for(String name : userNames){
                 try {
-                    AddRecord.addRecord(name, message);
+                    System.out.println(this.userName +" : "+message);
+                    System.out.println(name);
+                    if(this.userName.equals(name)) System.out.println(666);
+                    System.out.println("flag = "+flag);
+                    if(this.userName.equals(name) && flag==0) continue;
+                    System.out.println(555);
+                    AddRecord.addRecord(message, name);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -124,12 +130,14 @@ public class ChatServer {
 
             for(PrintWriter writer : clientWriters){
                 if(writer.equals(w)){   // 发给自己的信息
+                    if(flag == 0) continue;
                     writer.println(message);
                     writer.flush();
-                    continue;
                 }
-                writer.println(userName+message); // 发给其他用户的信息
-                writer.flush();
+                else{
+                    writer.println(userName+message); // 发给其他用户的信息
+                    writer.flush();
+                }
             }
         }
     }

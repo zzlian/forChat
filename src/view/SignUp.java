@@ -1,5 +1,6 @@
 package view;
 
+import dao.AddUser;
 import dao.IsUsingName;
 
 import javax.swing.*;
@@ -133,6 +134,7 @@ public class SignUp {
                     JOptionPane.showMessageDialog(null, "用户名已存在！");
                     return;
                 }
+                AddUser.addUser(name, passwd);
                 JOptionPane.showMessageDialog(null, "注册成功！");
                 changeToLogin();  // 跳转至登录界面
             } catch (SQLException e1) {
