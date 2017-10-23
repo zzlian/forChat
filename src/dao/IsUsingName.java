@@ -12,7 +12,7 @@ public class IsUsingName {
     public static boolean isUsingName(String name) throws SQLException, ClassNotFoundException {
         Connection con = GetConnection.getConnection(); // 获取连接
 
-        String sql = "select * from users where username = ?";
+        String sql = "select * from user where username = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, name);
         ResultSet rs = ps.executeQuery();   // 数据库查询

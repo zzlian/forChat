@@ -9,7 +9,7 @@ public class IsUser {
     public static boolean isUser(String userName, String password) throws SQLException, ClassNotFoundException {
         Connection con = GetConnection.getConnection(); // 获取连接
 
-        String sql = "select * from users where username = ? and password = ?";
+        String sql = "select * from user where username = ? and password = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, userName);
         ps.setString(2, password);

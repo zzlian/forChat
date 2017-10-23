@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class SignUp {
-    JFrame frame;
-    JTextField userName;      // 用户名框
-    JPasswordField password;  // 密码框
-    JPasswordField refirm;    // 密码确认框
-    JButton sign;             // 确认注册按钮
-    JButton back;             // 返回登录界面按钮
-    JButton reset;            // 重置按钮
+    public JFrame frame;
+    public JTextField userName;      // 用户名框
+    public JPasswordField password;  // 密码框
+    public JPasswordField refirm;    // 密码确认框
+    public JButton sign;             // 确认注册按钮
+    public JButton back;             // 返回登录界面按钮
+    public JButton reset;            // 重置按钮
 
 
     /*

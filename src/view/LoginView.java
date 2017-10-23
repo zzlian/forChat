@@ -1,5 +1,6 @@
 package view;
 
+import dao.IsLivingUser;
 import dao.IsUser;
 import model.User;
 
@@ -11,12 +12,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginView {
-    JFrame frame;         // 登录窗口
-    JButton checkButton;  // 登录确认按钮
-    JButton sign;         // 注册按钮
-    JButton reset;        // 重置按钮
-    JTextField userName;
-    JPasswordField password;
+    public JFrame frame;         // 登录窗口
+    public JButton checkButton;  // 登录确认按钮
+    public JButton sign;         // 注册按钮
+    public JButton reset;        // 重置按钮
+    public JTextField userName;
+    public JPasswordField password;
 
     public static void main(String[] args){
         new LoginView();
@@ -142,6 +143,11 @@ public class LoginView {
                     return;
                 }
                 try {    // 登录成功，跳转至聊天窗口
+                    ok = IsLivingUser.isLivingUser(name);
+                    if(ok){
+                        JOptionPane.showMessageDialog(null, "该用户已经在线，不能重复登录！");
+                        return;
+                    }
                     User user = new User(name, passwd);
                     frame.dispose();
                     new ChatView(user);

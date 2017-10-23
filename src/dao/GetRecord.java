@@ -33,6 +33,10 @@ public class GetRecord {
         while(rs.next()){
             records.add(rs.getString(3));
         }
+
+        ps.close();
+        con.close();
+
         return records;
     }
 }

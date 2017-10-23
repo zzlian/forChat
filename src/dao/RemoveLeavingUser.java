@@ -4,17 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AddRecord {
+public class RemoveLeavingUser {
     /*
-     * 添加聊天记录信息
+     * 移除下线的用户
      */
-    public static void addRecord(String message, String userName) throws SQLException, ClassNotFoundException {
+    public static void removeLeavingUser(String userName) throws SQLException, ClassNotFoundException {
         Connection con = GetConnection.getConnection(); // 获取数据库连接
 
-        String sql = "insert into messages (username,message) value(?,?)";  // 插入语句
+        String sql = "delete from livinguser where username = ?";  // 删除语句
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, userName);
-        ps.setString(2, message);
         ps.executeUpdate();     // 执行更新
 
         ps.close();

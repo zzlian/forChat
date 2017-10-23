@@ -1,8 +1,9 @@
 package service;
 
-import com.sun.corba.se.impl.io.IIOPOutputStream;
+import dao.AddLivingUser;
 import dao.AddRecord;
 import dao.GetRecord;
+import dao.RemoveLeavingUser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -61,8 +62,6 @@ public class ChatServer {
             this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer = new PrintWriter(this.socket.getOutputStream());
             clientWriters.add(writer);
-
-            System.out.println("new a thread");
         }
 
         /*
@@ -74,12 +73,22 @@ public class ChatServer {
             try {   // 第一次发送信息，有用户上线了
                 userName = reader.readLine();
 
+                try {  // 添加上线用户到活跃列表
+                    AddLivingUser.addLivingUser(userName);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 try {  // 用户上线时， 恢复上次聊天的信息
                     ArrayList<String> records = GetRecord.getRecord(userName);
                     for(String record : records){
-                        writer.write(record+"\n");
+                        writer.println(record);
                         writer.flush();
                     }
+                    writer.println("以上信息为上次聊天记录");
+                    writer.flush();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -114,12 +123,7 @@ public class ChatServer {
 
             for(String name : userNames){
                 try {
-                    System.out.println(this.userName +" : "+message);
-                    System.out.println(name);
-                    if(this.userName.equals(name)) System.out.println(666);
-                    System.out.println("flag = "+flag);
                     if(this.userName.equals(name) && flag==0) continue;
-                    System.out.println(555);
                     AddRecord.addRecord(message, name);
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -147,6 +151,13 @@ public class ChatServer {
      * 将下线客户端对应的输出流移除
      */
     public void deleteClient(PrintWriter writer, String userName){
+        try {   // 将下线用户移出活跃列表
+            RemoveLeavingUser.removeLeavingUser(userName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         clientWriters.remove(writer);
         userNames.remove(userName);
     }
