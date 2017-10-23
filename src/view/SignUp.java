@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class SignUp {
-    public JFrame frame;
-    public JTextField userName;      // 用户名框
-    public JPasswordField password;  // 密码框
-    public JPasswordField refirm;    // 密码确认框
-    public JButton sign;             // 确认注册按钮
-    public JButton back;             // 返回登录界面按钮
-    public JButton reset;            // 重置按钮
+    private JFrame frame;
+    private JTextField userName;      // 用户名框
+    private JPasswordField password;  // 密码框
+    private JPasswordField refirm;    // 密码确认框
+    private JButton sign;             // 确认注册按钮
+    private JButton back;             // 返回登录界面按钮
+    private JButton reset;            // 重置按钮
 
 
     /*
@@ -29,35 +29,36 @@ public class SignUp {
 
         JPanel panel = new JPanel();
 
-        JLabel label_name = new JLabel("请输入用户名：");
+        JLabel label_name = new JLabel("请输入用户名：");  // 用户名标签
         label_name.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-        JLabel label_passwd = new JLabel("请输入密码：");
+        JLabel label_passwd = new JLabel("请输入密码："); // 密码标签
         label_passwd.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-        JLabel label_refirm = new JLabel("确认密码：");
+        JLabel label_refirm = new JLabel("确认密码：");  // 重复输入密码标签
         label_refirm.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
-        userName = new JTextField(20);
+        userName = new JTextField(20);      // 用户名文本框
         userName.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-        password = new JPasswordField(20);
+        password = new JPasswordField(20);  // 密码框
         password.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-        refirm = new JPasswordField(20);
+        refirm = new JPasswordField(20);    // 重复密码框
         refirm.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
-        JLabel label_1 = new JLabel("   ");
+        JLabel label_1 = new JLabel("   ");    // 辅助布局标签
         JLabel label_2 = new JLabel("   ");
         JLabel label_3 = new JLabel("   ");
-        sign = new JButton("确定注册");
+
+        sign = new JButton("确定注册");     // 确认注册按钮
         sign.setFont(new Font("微软雅黑", Font.PLAIN, 20));
         sign.addActionListener(new ConfirmAction());
-        back = new JButton("返回登录");
+        back = new JButton("返回登录");     // 返回登录按钮
         back.setFont(new Font("微软雅黑", Font.PLAIN, 20));
         back.addActionListener(new BackAction());
-        reset = new JButton("重置");
+        reset = new JButton("重置");       // 输入信息重置按钮
         reset.setFont(new Font("微软雅黑", Font.PLAIN, 20));
         reset.addActionListener(new ResetAction());
 
         GridBagLayout gbl = new GridBagLayout(); // 网格布局管理器
-        panel.setLayout(gbl);
+        panel.setLayout(gbl);     // 添加组件到面板
         panel.add(label_name);
         panel.add(userName);
         panel.add(label_passwd);
@@ -116,15 +117,15 @@ public class SignUp {
             String passwd = password.getText();
             boolean isUse;
 
-            if(name.equals("")) {
+            if(name.equals("")) {   // 用户名为空处理
                 JOptionPane.showMessageDialog(null, "用户名不能为空！");
                 return;
             }
-            else if(passwd.equals("")){
+            else if(passwd.equals("")){ // 密码为空处理
                 JOptionPane.showMessageDialog(null, "密码不能为空！");
                 return;
             }
-            else if(!passwd.equals(refirm.getText())){
+            else if(!passwd.equals(refirm.getText())){ // 两次密码不一致处理
                 JOptionPane.showMessageDialog(null, "两次密码不一致！");
                 return;
             }
@@ -134,7 +135,7 @@ public class SignUp {
                     JOptionPane.showMessageDialog(null, "用户名已存在！");
                     return;
                 }
-                AddUser.addUser(name, passwd);
+                AddUser.addUser(name, passwd);  // 注册成功，添加至用户列表
                 JOptionPane.showMessageDialog(null, "注册成功！");
                 changeToLogin();  // 跳转至登录界面
             } catch (SQLException e1) {
@@ -159,12 +160,12 @@ public class SignUp {
      * 跳转至登录界面
      */
     public void changeToLogin(){
-        frame.dispose();
-        new LoginView();
+        frame.dispose();    // 关闭当前页面
+        new LoginView();    // 跳转至登录页面
     }
 
     /*
-     * 重置事件监听
+     * 重置信息事件监听
      */
     public class ResetAction implements ActionListener{
         @Override

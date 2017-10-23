@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginView {
-    public JFrame frame;         // 登录窗口
-    public JButton checkButton;  // 登录确认按钮
-    public JButton sign;         // 注册按钮
-    public JButton reset;        // 重置按钮
-    public JTextField userName;
-    public JPasswordField password;
+    private JFrame frame;         // 登录窗口
+    private JButton checkButton;  // 登录确认按钮
+    private JButton sign;         // 注册按钮
+    private JButton reset;        // 重置按钮
+    private JTextField userName;
+    private JPasswordField password;
 
     public static void main(String[] args){
         new LoginView();
@@ -64,7 +64,7 @@ public class LoginView {
         reset.addActionListener(new ResetAction());
 
         GridBagLayout gbl = new GridBagLayout();// 网格布局管理器
-        panel.setLayout(gbl);
+        panel.setLayout(gbl);     // 将组件添加到面板中
         panel.add(label_1);
         panel.add(label_name);
         panel.add(userName);
@@ -126,37 +126,35 @@ public class LoginView {
             String name = userName.getText();
             String passwd = password.getText();
 
-            if(name.equals("")){
+            if(name.equals("")){   // 用户名为空处理
                 JOptionPane.showMessageDialog(null, "用户名不能为空");
                 return;
             }
-            else if(passwd.equals("")){
+            else if(passwd.equals("")){ // 密码为空处理
                 JOptionPane.showMessageDialog(null, "密码不能为空");
                 return;
             }
 
-            boolean ok = false;
+            boolean ok;
             try {
-                ok = IsUser.isUser(name, passwd);
+                ok = IsUser.isUser(name, passwd); // 判断账号是否存在
                 if(!ok) {
                     JOptionPane.showMessageDialog(null, "用户名或密码错误！");
                     return;
                 }
-                try {    // 登录成功，跳转至聊天窗口
-                    ok = IsLivingUser.isLivingUser(name);
-                    if(ok){
-                        JOptionPane.showMessageDialog(null, "该用户已经在线，不能重复登录！");
-                        return;
-                    }
-                    User user = new User(name, passwd);
-                    frame.dispose();
-                    new ChatView(user);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+                ok = IsLivingUser.isLivingUser(name);  // 判断账号是否已经登录
+                if(ok){
+                    JOptionPane.showMessageDialog(null, "该用户已经在线，不能重复登录！");
+                    return;
                 }
+                User user = new User(name, passwd); // 构建用户实体类
+                frame.dispose();      // 关闭当前界面
+                new ChatView(user);   // 登录成功，跳转至聊天窗口
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }catch (IOException e1) {
                 e1.printStackTrace();
             }
         }

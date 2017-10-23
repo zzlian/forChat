@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ChatView {
-    JFrame frame;
-    JScrollPane scrollPane1;
-    JScrollPane scrollPane2;
-    JButton send;
-    ChatClient client;
+    private JFrame frame;
+    private JScrollPane scrollPane1;
+    private JScrollPane scrollPane2;
+    private JButton send;
+    private ChatClient client;
 
 
     /*
@@ -37,13 +37,13 @@ public class ChatView {
         client.rmessages.setBackground(Color.LIGHT_GRAY);
         client.rmessages.setFont(new Font("微软雅黑", Font.PLAIN, 25));
         client.rmessages.setCaretPosition(client.rmessages.getText().length());
-        scrollPane1 = new JScrollPane(client.rmessages);  // 添加滚动条
+        scrollPane1 = new JScrollPane(client.rmessages); // 添加滚动条
 
         client.smessages = new JTextArea();    // 发送信息框
         client.smessages.setFont(new Font("微软雅黑", Font.PLAIN, 25));
         client.smessages.setLineWrap(true);
         client.smessages.setWrapStyleWord(true);
-        scrollPane2 = new JScrollPane(client.smessages);  // 添加滚动条
+        scrollPane2 = new JScrollPane(client.smessages); // 添加滚动条
 
         send = new JButton("发送");   // 发送按钮
         send.addActionListener(new SendMessageAction());
@@ -98,8 +98,8 @@ public class ChatView {
             String message;
             message = client.smessages.getText();
             if(message.equals("")) return;
-            client.sendMessage(message);
-            client.smessages.setText("");
+            client.sendMessage(message);   // 发送信息给其它用户
+            client.smessages.setText("");  // 将发送信息框置空
         }
     }
 }

@@ -15,7 +15,7 @@ public class ChatClient {
     public User user;
     public JTextArea rmessages;  // 接收信息框
     public JTextArea smessages;  // 发送信息框
-    public PrintWriter writer;
+    public PrintWriter writer;   // 打印输出流
 
 
     /*
@@ -54,7 +54,7 @@ public class ChatClient {
      * 建立线程来管理接收的信息
      */
     public class MessageHandler implements Runnable{
-        BufferedReader reader;
+        private BufferedReader reader;
 
         public MessageHandler(BufferedReader reader){
             this.reader = reader;
@@ -66,10 +66,10 @@ public class ChatClient {
                 try {
                     message = reader.readLine();    // 接收客户端发送的信息
                     rmessages.append(message+"\n"); // 显示到文本框中
-                } catch (Exception e) {             // 连接中断，发生异常，此时有用户下线了
-                    System.out.println("有事下线了。。。");
+                } catch (Exception e) {  // 连接中断，发生异常，此时有用户下线了
                     try {
-                        reader.close();
+                        System.out.println("有事下线了。。。");
+                        reader.close();  // 关闭输入流
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

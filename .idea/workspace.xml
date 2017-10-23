@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="730d0ede-b89c-48d4-873a-f6f6cf36b3cf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/AddLivingUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/IsLivingUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/RemoveLeavingUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/dao/AddRecord.class" afterPath="$PROJECT_DIR$/out/production/forChating/dao/AddRecord.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/dao/GetConnection.class" afterPath="$PROJECT_DIR$/out/production/forChating/dao/GetConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/service/ChatServer$ClientHandler.class" afterPath="$PROJECT_DIR$/out/production/forChating/service/ChatServer$ClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/service/ChatServer.class" afterPath="$PROJECT_DIR$/out/production/forChating/service/ChatServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/service/ChatClient$MessageHandler.class" afterPath="$PROJECT_DIR$/out/production/forChating/service/ChatClient$MessageHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/forChating/view/LoginView.class" afterPath="$PROJECT_DIR$/out/production/forChating/view/LoginView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/AddRecord.java" afterPath="$PROJECT_DIR$/src/dao/AddRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/AddUser.java" afterPath="$PROJECT_DIR$/src/dao/AddUser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/GetConnection.java" afterPath="$PROJECT_DIR$/src/dao/GetConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/GetRecord.java" afterPath="$PROJECT_DIR$/src/dao/GetRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/IsUser.java" afterPath="$PROJECT_DIR$/src/dao/IsUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/IsUsingName.java" afterPath="$PROJECT_DIR$/src/dao/IsUsingName.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/ChatServer.java" afterPath="$PROJECT_DIR$/src/service/ChatServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/ChatClient.java" afterPath="$PROJECT_DIR$/src/service/ChatClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/ChatView.java" afterPath="$PROJECT_DIR$/src/view/ChatView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LoginView.java" afterPath="$PROJECT_DIR$/src/view/LoginView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/SignUp.java" afterPath="$PROJECT_DIR$/src/view/SignUp.java" />
     </list>
@@ -45,11 +36,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+            <state relative-caret-position="389">
+              <caret line="134" column="23" lean-forward="true" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dao/GetConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -58,12 +61,19 @@
       <file leaf-file-name="ChatServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/ChatServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#515#523#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatClient.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/service/ChatClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-734">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,10 +111,6 @@
         <option value="$PROJECT_DIR$/src/service/Register.java" />
         <option value="$PROJECT_DIR$/src/service/Login.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/view/ChatView.java" />
-        <option value="$PROJECT_DIR$/src/service/ChatClient.java" />
-        <option value="$PROJECT_DIR$/src/view/SignUp.java" />
-        <option value="$PROJECT_DIR$/src/dao/GetConnection.java" />
         <option value="$PROJECT_DIR$/src/dao/IsUsingName.java" />
         <option value="$PROJECT_DIR$/src/dao/IsUser.java" />
         <option value="$PROJECT_DIR$/src/dao/AddLivingUser.java" />
@@ -113,8 +119,12 @@
         <option value="$PROJECT_DIR$/src/dao/GetRecord.java" />
         <option value="$PROJECT_DIR$/src/dao/IsLivingUser.java" />
         <option value="$PROJECT_DIR$/src/dao/RemoveLeavingUser.java" />
-        <option value="$PROJECT_DIR$/src/view/LoginView.java" />
         <option value="$PROJECT_DIR$/src/service/ChatServer.java" />
+        <option value="$PROJECT_DIR$/src/view/ChatView.java" />
+        <option value="$PROJECT_DIR$/src/view/SignUp.java" />
+        <option value="$PROJECT_DIR$/src/view/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/service/ChatClient.java" />
+        <option value="$PROJECT_DIR$/src/dao/GetConnection.java" />
       </list>
     </option>
   </component>
@@ -145,6 +155,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,27 +164,20 @@
               <item name="forChating" type="b2602c69:ProjectViewProjectNode" />
               <item name="forChating" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="forChating" type="b2602c69:ProjectViewProjectNode" />
-              <item name="forChating" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../myGUI" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/Program Files (x86)/java_work/forChating/src/view/ChatView.java" />
@@ -419,7 +424,9 @@
       <workItem from="1508660595999" duration="9222000" />
       <workItem from="1508671888633" duration="17555000" />
       <workItem from="1508689526857" duration="115000" />
-      <workItem from="1508748232574" duration="2313000" />
+      <workItem from="1508748232574" duration="2725000" />
+      <workItem from="1508754042429" duration="4550000" />
+      <workItem from="1508761519581" duration="3662000" />
     </task>
     <task id="LOCAL-00001" summary="add signView and chatView">
       <created>1508668904487</created>
@@ -449,11 +456,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508689615042</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="同个账号不能同时登陆多次的问题已解决">
+      <created>1508750614158</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1508750614158</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53384000" />
+    <option name="totallyTimeSpent" value="62008000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -480,7 +494,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29007635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3004362" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -508,7 +522,8 @@
     <MESSAGE value="差不多完成了" />
     <MESSAGE value="就差一点了" />
     <MESSAGE value="同个用户同时登陆的问题还没有解决，其它可以了" />
-    <option name="LAST_COMMIT_MESSAGE" value="同个用户同时登陆的问题还没有解决，其它可以了" />
+    <MESSAGE value="同个账号不能同时登陆多次的问题已解决" />
+    <option name="LAST_COMMIT_MESSAGE" value="同个账号不能同时登陆多次的问题已解决" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -523,7 +538,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -532,7 +549,7 @@
         <state relative-caret-position="3400">
           <caret line="136" column="46" lean-forward="false" selection-start-line="136" selection-start-column="46" selection-end-line="136" selection-end-column="46" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -541,7 +558,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -550,7 +569,7 @@
         <state relative-caret-position="3400">
           <caret line="136" column="46" lean-forward="true" selection-start-line="136" selection-start-column="46" selection-end-line="136" selection-end-column="46" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,7 +578,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -568,7 +589,7 @@
         <state relative-caret-position="100">
           <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,10 +605,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="105" column="78" lean-forward="false" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#515#523#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +643,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1525">
           <caret line="69" column="41" lean-forward="false" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -640,10 +660,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="105" column="78" lean-forward="true" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#515#523#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -707,7 +724,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1013">
           <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -722,6 +741,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/GetRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1508750206137" expanded="true" signature="418:459" ph="select * fro... aa" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/IsUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding>
+            <marker date="1508748854125" expanded="true" signature="287:341" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/IsUsingName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1508748854173" expanded="true" signature="380:417" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/RemoveLeavingUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1508750206019" expanded="true" signature="365:406" ph="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/IsLivingUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1508750206381" expanded="true" signature="388:431" ph="select * fro... livinguser" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -729,39 +802,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ChatView.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/AddLivingUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1450">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/SignUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-538">
-          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        <state relative-caret-position="475">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1508750206284" expanded="true" signature="356:398" ph="insert into livinguser... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/ChatClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/GetConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,86 +835,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/GetRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/view/SignUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        <state relative-caret-position="450">
+          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508750206137" expanded="true" signature="418:459" ph="select * fro... aa" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/IsUser.java">
+    <entry file="file://$PROJECT_DIR$/src/view/ChatView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        <state relative-caret-position="2325">
+          <caret line="101" column="54" lean-forward="false" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+    <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="134" column="23" lean-forward="true" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
           <folding>
-            <marker date="1508748854125" expanded="true" signature="287:341" ph="select * fro... users" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/IsUsingName.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/GetConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508748854173" expanded="true" signature="380:417" ph="select * fro... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/AddLivingUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508750206284" expanded="true" signature="356:398" ph="insert into livinguser... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/RemoveLeavingUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508750206019" expanded="true" signature="365:406" ph="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/IsLivingUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508750206381" expanded="true" signature="388:431" ph="select * fro... livinguser" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/ChatServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#515#523#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/LoginView.java">
+    <entry file="file://$PROJECT_DIR$/src/service/ChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+        <state relative-caret-position="-734">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -876,11 +893,15 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-sorted>false</show-sorted>
+          </artifact-editor>
+          <last-edited>unnamed</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
