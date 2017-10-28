@@ -22,6 +22,10 @@ public class ChatServer {
         new ChatServer().go();
     }
 
+    public synchronized ArrayList<PrintWriter> getClientWriters(){
+        return this.clientWriters;
+    }
+
     /*
      * 监听是否有其它的客户端链接进来了
      * 若有则建立新的线程进行处理
@@ -104,6 +108,12 @@ public class ChatServer {
             while(true){
                 try {           // 有客户端发送信息时，告诉其他用户
                     message = reader.readLine();
+
+                    if(message.equals("...sending file now...")){ // 文件传输
+                        sendFile(writer, reader);
+                        continue;
+                    }
+
                     System.out.println("get a message : " + message);
                     tellEveryone(message, writer, userName+"：", 1);
                 } catch (IOException e) {             // 当有客户端关闭时，连接重置，出现异常
@@ -114,10 +124,13 @@ public class ChatServer {
             }
         }
 
+
         /*
          * 将客户端发送的信息转发给每一个客户端
          */
         public void tellEveryone(String message, PrintWriter w, String userName, int flag){
+            ArrayList<PrintWriter> clientWriters = getClientWriters(); // 使用了同步策略，这样在发送文件时别的线程就取不到输出流
+
             System.out.println("the number of clients : " + clientWriters.size());
             if(clientWriters.size() == 0) return;  // 没有连接
 
@@ -143,6 +156,36 @@ public class ChatServer {
                     writer.flush();
                 }
             }
+        }
+    }
+
+    /*
+     * 发送文件
+     */
+    public synchronized void sendFile(PrintWriter writer, BufferedReader reader){
+        System.out.println("发送文件");
+        try {
+            String fileName = reader.readLine();
+            for(PrintWriter w : clientWriters){   // 提醒用户发送的是文件并发送文件名
+                if(w.equals(writer)) continue;
+                w.println("...sending file...");
+                w.flush();
+                w.println(fileName);
+                w.flush();
+            }
+
+            String line;
+            while((line=reader.readLine()) != null){  // 发送文件信息
+                for(PrintWriter w : clientWriters){
+                    if(w.equals(writer)) continue;
+                    w.println(line);
+                    w.flush();
+                }
+                if(line.equals("...sending file ending...")) break;
+            }
+            System.out.println("发送文件成功");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

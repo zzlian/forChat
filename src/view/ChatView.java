@@ -15,6 +15,7 @@ public class ChatView {
     private JScrollPane scrollPane1;
     private JScrollPane scrollPane2;
     private JButton send;
+    private JButton sendFile;
     private ChatClient client;
 
 
@@ -45,8 +46,10 @@ public class ChatView {
         client.smessages.setWrapStyleWord(true);
         scrollPane2 = new JScrollPane(client.smessages); // 添加滚动条
 
-        send = new JButton("发送");   // 发送按钮
+        send = new JButton("发送信息");   // 发送按钮
         send.addActionListener(new SendMessageAction());
+        sendFile = new JButton("发送文件"); // 发送文件按钮
+        sendFile.addActionListener(new SendFileAction());
 
         GridBagLayout layout = new GridBagLayout(); // 布局管理器
         frame.setLayout(layout);
@@ -54,6 +57,7 @@ public class ChatView {
         frame.getContentPane().add(scrollPane1);
         frame.getContentPane().add(scrollPane2);
         frame.getContentPane().add(send);
+        frame.getContentPane().add(sendFile);
 
         GridBagConstraints s = new GridBagConstraints(); // 布局约束
         s.fill = GridBagConstraints.BOTH;
@@ -65,9 +69,14 @@ public class ChatView {
         s.weightx = 1;
         s.weighty = 0.195;
         layout.setConstraints(scrollPane2, s);
+        s.gridwidth = 1;
+        s.weighty = 0.005;
+        s.weightx = 0.8;
+        layout.setConstraints(send, s);
         s.gridwidth = 0;
         s.weighty = 0.005;
-        layout.setConstraints(send, s);
+        s.weightx = 0.2;
+        layout.setConstraints(sendFile, s);
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,6 +109,16 @@ public class ChatView {
             if(message.equals("")) return;
             client.sendMessage(message);   // 发送信息给其它用户
             client.smessages.setText("");  // 将发送信息框置空
+        }
+    }
+
+    /*
+     * 发送文件事件监听
+     */
+    public class SendFileAction implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            client.sendFile();
         }
     }
 }
