@@ -88,8 +88,8 @@ public class ChatClient {
      * 接收文件
      */
     public void receiveFile(BufferedReader reader){
-        String[] choice = {"receice file", "refuse"};   // 选择是否接收文件
-        Object selectedValue = JOptionPane.showInputDialog(null, "Choose one", "Input",
+        String[] choice = {"receive file", "refuse"};   // 选择是否接收文件
+        Object selectedValue = JOptionPane.showInputDialog(null, "接收或拒绝", "接收文件",
                 JOptionPane.INFORMATION_MESSAGE, null,
                 choice, choice[0]);
         String line;
